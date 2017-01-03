@@ -44,7 +44,8 @@ else ifeq ($(UNAME_SYS), SunOS)
 	CXXFALGS ?= -O2 -finline-function -Wall
 	LDFLAGS ?= -m64 -fPIC -L /opt/local/lib
 else ifeq ($(UNAME_SYS), Msys)
-	CC = /mingw64/bin/gcc
+	CC = gcc
+	CFLAGS ?= -D WIN32
 $(info CC is $(CC));
 	CFLAGS ?= -O3 -std=c99 -finline-functions -Wall -Wmissing-prototypes
 	CXXFLAGS ?= -O3 -finline-functions -Wall

@@ -1,7 +1,6 @@
 /* This was found in https://github.com/ultramancool/tweetnacl-usable.
  */
 
-#define WIN32
 #ifdef WIN32
 #include "Windows.h"
 #endif
