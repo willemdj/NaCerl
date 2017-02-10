@@ -20,16 +20,20 @@
 %% FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 %% IN THE SOFTWARE.
 
--module(nacl_sup).
+-module(nacerl_app).
 
--behaviour(supervisor).
+-behaviour(application).
 
--export([start_link/0]).
--export([init/1]).
+-export([priv_dir/0]).
+-export([start/2, stop/1]).
 
-start_link() ->
-    supervisor:start_link({local, ?MODULE}, ?MODULE, []).
+priv_dir() ->
+    case code:priv_dir(scrypt) of
+        {error, bad_name} ->
+            filename:join(filename:dirname(filename:dirname(code:which(?MODULE))), "priv");
+        D ->
+            D
+    end.
 
-init([]) ->
-    {ok, { {one_for_one, 5, 10},
-           []} }.
+start(_StartType, _StartArgs) -> nacerl_sup:start_link().
+stop(_State) -> ok.

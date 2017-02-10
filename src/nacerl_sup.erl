@@ -20,5 +20,16 @@
 %% FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 %% IN THE SOFTWARE.
 
--record(nacl_box_keypair, {pk, sk}).
--record(nacl_envelope, {nonce, ciphertext}).
+-module(nacerl_sup).
+
+-behaviour(supervisor).
+
+-export([start_link/0]).
+-export([init/1]).
+
+start_link() ->
+    supervisor:start_link({local, ?MODULE}, ?MODULE, []).
+
+init([]) ->
+    {ok, { {one_for_one, 5, 10},
+           []} }.

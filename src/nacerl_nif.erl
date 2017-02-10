@@ -20,7 +20,7 @@
 %% FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 %% IN THE SOFTWARE.
 
--module(nacl_nif).
+-module(nacerl_nif).
 
 -export([randombytes/1,
          hash/1,
@@ -40,7 +40,7 @@
 
 -on_load(init/0).
 
-init() -> erlang:load_nif(filename:join(nacl_app:priv_dir(), ?MODULE), 0).
+init() -> erlang:load_nif(filename:join(nacerl_app:priv_dir(), ?MODULE), 0).
 
 randombytes(_Count) -> erlang:nif_error(not_loaded).
 hash(_Bytes) -> erlang:nif_error(not_loaded).

@@ -27,6 +27,6 @@
   {vsn, "0.1:0"},
   {registered, []},
   {applications, [kernel, stdlib]},
-  {mod, {nacl_app, []}},
+  {mod, {nacerl_app, []}},
   {env, []}
  ]}.
